@@ -449,8 +449,8 @@ for epoch in range(200):
     scheduler_D.step()
     scheduler_F.step()
     scheduler_C.step()
-    torch.save(feature_extractor.state_dict(), f'extractor_model.bin')
-    torch.save(label_predictor.state_dict(), f'predictor_model.bin')
+    torch.save(feature_extractor.state_dict(), f'extractor_model_vgg.bin')
+    torch.save(label_predictor.state_dict(), f'predictor_model_vgg.bin')
 
     print('epoch {:>3d}: train D loss: {:6.4f}, train F loss: {:6.4f}, acc {:6.4f}'.format(epoch, train_D_loss, train_F_loss, train_acc))
 
@@ -477,7 +477,7 @@ result = np.concatenate(result)
 
 # Generate your submission
 df = pd.DataFrame({'id': np.arange(0,len(result)), 'label': result})
-df.to_csv('DaNN_submission.csv',index=False)
+df.to_csv('DaNN_submission_vgg.csv',index=False)
 
 """# Q&A
 
