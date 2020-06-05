@@ -181,7 +181,7 @@ feature_extractor.load_state_dict(torch.load("extractor_model_vgg.bin"))
 #summary(feature_extractor, (1, 32, 32))
 label_predictor = LabelPredictor().cuda()
 label_predictor.load_state_dict(torch.load('predictor_model_vgg.bin'))
-#domain_classifier = DomainClassifier().cuda()
+domain_classifier = DomainClassifier().cuda()
 
 feature_extract = []
 answer = []
