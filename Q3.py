@@ -202,8 +202,8 @@ for i, ((source_data, source_label), (target_data, _)) in enumerate(zip(source_d
         # Step 1 : 訓練Domain Classifier
         feature = feature_extractor(mixed_data)
         domain_logits = domain_classifier(feature.detach())
-        feature_extract.append(domain_logits.numpy())
-        answer.append(domain_label.numpy())
+        feature_extract.append(domain_logits.cpu().numpy())
+        answer.append(domain_label.cpu().numpy())
         # class_logits = label_predictor(feature[:source_data.shape[0]])
         # domain_logits = domain_classifier(feature)
         # loss = domain_criterion(domain_logits, domain_label)
