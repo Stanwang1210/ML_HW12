@@ -203,7 +203,7 @@ for i, ((source_data, source_label), (target_data, _)) in enumerate(zip(source_d
         feature = feature_extractor(mixed_data)
         domain_logits = domain_classifier(feature.detach())
         feature_extract.append(domain_logits)
-        ans.append(domain_label)
+        answer.append(domain_label)
         # class_logits = label_predictor(feature[:source_data.shape[0]])
         # domain_logits = domain_classifier(feature)
         # loss = domain_criterion(domain_logits, domain_label)
