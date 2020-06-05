@@ -245,5 +245,6 @@ for i, ((source_data, source_label), (target_data, _)) in enumerate(zip(source_d
 # # Generate your submission
 # df = pd.DataFrame({'id': np.arange(0,len(result)), 'label': result})
 # df.to_csv(prediction,index=False)
-print('feature_extract is like ',feature_extract)
-print('answer is like ', answer)
+import numpy as np
+np.save('feature_extract.npy',np.array(feature_extract))
+np.save('answer.npy',np.array(answer))
