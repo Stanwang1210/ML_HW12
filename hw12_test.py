@@ -17,6 +17,7 @@ import torchvision.transforms as transforms
 from torchvision.datasets import ImageFolder
 from torch.utils.data import DataLoader
 from Architecture import *
+import sys
 import os
 source_transform = transforms.Compose([
     # 轉灰階: Canny 不吃 RGB。
