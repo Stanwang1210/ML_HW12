@@ -26,6 +26,7 @@ Created on Fri Jun  5 16:34:33 2020
 @author: 王式珩
 """
 import torch.nn as nn
+from sklearn.manifold import TSNE
 class LabelPredictor(nn.Module):
 
     def __init__(self):
@@ -198,12 +199,14 @@ for i, ((source_data, source_label), (target_data, _)) in enumerate(zip(source_d
         domain_label = torch.zeros([source_data.shape[0] + target_data.shape[0], 1]).cuda()
         # 設定source data的label為1
         domain_label[:source_data.shape[0]] = 1
-
+        domain_label = TSNE(n_components=2).fit_transform(domain_label)
         # Step 1 : 訓練Domain Classifier
         feature = feature_extractor(mixed_data)
         domain_logits = domain_classifier(feature.detach())
+        domain_logits = TSNE(n_components=2).fit_transform(domain_logits)
         feature_extract.append(domain_logits.detach().cpu().numpy())
         answer.append(domain_label.detach().cpu().numpy())
+#        = TSNE(n_components=2).fit_transform(kpca)
         # class_logits = label_predictor(feature[:source_data.shape[0]])
         # domain_logits = domain_classifier(feature)
         # loss = domain_criterion(domain_logits, domain_label)
