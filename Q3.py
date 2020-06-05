@@ -202,9 +202,9 @@ for i, ((source_data, source_label), (target_data, _)) in enumerate(zip(source_d
         domain_label = TSNE(n_components=2).fit_transform(domain_label.detach().cpu().numpy())
         # Step 1 : 訓練Domain Classifier
         feature = feature_extractor(mixed_data)
-        domain_logits = domain_classifier(feature.detach())
-        domain_logits = TSNE(n_components=2).fit_transform(domain_logits.detach().cpu().numpy())
-        feature_extract.append(domain_logits)
+#        domain_logits = domain_classifier(feature.detach())
+        feature = TSNE(n_components=2).fit_transform(feature.detach().cpu().numpy())
+        feature_extract.append(feature)
         answer.append(domain_label)
 #        = TSNE(n_components=2).fit_transform(kpca)
         # class_logits = label_predictor(feature[:source_data.shape[0]])
