@@ -199,11 +199,11 @@ for i, ((source_data, source_label), (target_data, _)) in enumerate(zip(source_d
         domain_label = torch.zeros([source_data.shape[0] + target_data.shape[0], 1]).cuda()
         # 設定source data的label為1
         domain_label[:source_data.shape[0]] = 1
-        domain_label = TSNE(n_components=2).fit_transform(domain_label)
+        domain_label = TSNE(n_components=2).fit_transform(domain_label.detach().cpu().numpy())
         # Step 1 : 訓練Domain Classifier
         feature = feature_extractor(mixed_data)
         domain_logits = domain_classifier(feature.detach())
-        domain_logits = TSNE(n_components=2).fit_transform(domain_logits)
+        domain_logits = TSNE(n_components=2).fit_transform(domain_logits.detach().cpu().numpy())
         feature_extract.append(domain_logits.detach().cpu().numpy())
         answer.append(domain_label.detach().cpu().numpy())
 #        = TSNE(n_components=2).fit_transform(kpca)
