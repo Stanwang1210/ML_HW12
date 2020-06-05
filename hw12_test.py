@@ -53,10 +53,10 @@ test_dataloader = DataLoader(target_dataset, batch_size=128, shuffle=False)
 from torch.optim.lr_scheduler import StepLR
 
 feature_extractor = Vgg16().cuda()
-feature_extractor = torch.load("extractor_model_vgg.bin")
+feature_extractor = torch.load_state_dict("extractor_model_vgg.bin")
 #summary(feature_extractor, (1, 32, 32))
 label_predictor = LabelPredictor().cuda()
-label_predictor = torch.load('predictor_model_vgg.bin')
+label_predictor = torch.load_state_dict('predictor_model_vgg.bin')
 #domain_classifier = DomainClassifier().cuda()
 
 result = []
