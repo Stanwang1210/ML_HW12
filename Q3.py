@@ -173,8 +173,8 @@ target_dataset = ImageFolder('real_or_drawing/test_data', transform=target_trans
 
 source_dataloader = DataLoader(source_dataset, batch_size=32, shuffle=True)
 target_dataloader = DataLoader(target_dataset, batch_size=32, shuffle=True)
-torch.save(source_dataloader, 'source_dataloader.pth')
-torch.save(target_dataloader, 'target_dataloader.pth')
+#torch.save(source_dataloader, 'source_dataloader.pth')
+#torch.save(target_dataloader, 'target_dataloader.pth')
 
 feature_extractor = Vgg16().cuda()
 feature_extractor.load_state_dict(torch.load("extractor_model_vgg.bin"))
