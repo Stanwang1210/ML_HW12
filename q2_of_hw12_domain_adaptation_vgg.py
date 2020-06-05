@@ -99,7 +99,7 @@ cv2.Canny使用非常方便，只需要兩個參數: low_threshold, high_thresho
 以下我們直接拿source data做做看。
 """
 
-#import cv2
+import cv2
 #import matplotlib.pyplot as plt
 #titles = ['horse', 'bed', 'clock', 'apple', 'cat', 'plane', 'television', 'dog', 'dolphin', 'spider']
 #plt.figure(figsize=(18, 18))
