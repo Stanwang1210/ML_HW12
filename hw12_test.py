@@ -50,7 +50,7 @@ data_directory = sys.argv[1]
 prediction = sys.argv[2]
 target_dataset = ImageFolder(os.path.join(data_directory,'test_data'), transform=target_transform)
 test_dataloader = DataLoader(target_dataset, batch_size=128, shuffle=False)
-from torch.optim.lr_scheduler import StepLR
+
 
 feature_extractor = Vgg16().cuda()
 feature_extractor.load_state_dict(torch.load("extractor_model_vgg.bin"))
